@@ -32,11 +32,12 @@ public class UPartnerApp {
         panel = new JPanel(cardLayout);
 
         JPanel welcomePanel = new JPanel(new BorderLayout());
+        welcomePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         JLabel welcomeLabel = new JLabel("WELCOME TO UPartner", SwingConstants.CENTER);
         welcomeLabel.setFont(new Font("Serif", Font.BOLD, 24));
         welcomePanel.add(welcomeLabel, BorderLayout.NORTH);
 
-        JPanel buttonPanel = new JPanel();
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 10));
         JButton registerButton = new JButton("Register");
         JButton loginButton = new JButton("Login");
         buttonPanel.add(registerButton);
@@ -53,8 +54,9 @@ public class UPartnerApp {
     }
 
     private void showRegisterPanel() {
-        String[] options = {"Register as Mahasiswa", "Register as Dosen"};
-        int choice = JOptionPane.showOptionDialog(null, "Choose registration type", "Register", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        String[] options = { "Register as Mahasiswa", "Register as Dosen" };
+        int choice = JOptionPane.showOptionDialog(null, "Choose registration type", "Register",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
         if (choice == 0) {
             registerMahasiswa();
         } else if (choice == 1) {
@@ -63,8 +65,9 @@ public class UPartnerApp {
     }
 
     private void showLoginPanel() {
-        String[] options = {"Login as Mahasiswa", "Login as Dosen"};
-        int choice = JOptionPane.showOptionDialog(null, "Choose login type", "Login", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        String[] options = { "Login as Mahasiswa", "Login as Dosen" };
+        int choice = JOptionPane.showOptionDialog(null, "Choose login type", "Login", JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
         if (choice == 0) {
             loginMahasiswa();
         } else if (choice == 1) {
@@ -80,11 +83,11 @@ public class UPartnerApp {
         JPasswordField passwordField = new JPasswordField();
 
         Object[] message = {
-            "NIM:", NIMField,
-            "Name:", nameField,
-            "Program Studi:", programStudiField,
-            "Email:", emailField,
-            "Password:", passwordField
+                "NIM:", NIMField,
+                "Name:", nameField,
+                "Program Studi:", programStudiField,
+                "Email:", emailField,
+                "Password:", passwordField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Register Mahasiswa", JOptionPane.OK_CANCEL_OPTION);
@@ -120,11 +123,11 @@ public class UPartnerApp {
         JPasswordField passwordField = new JPasswordField();
 
         Object[] message = {
-            "NIP:", NIPField,
-            "Name:", nameField,
-            "Program Studi:", programStudiField,
-            "Email:", emailField,
-            "Password:", passwordField
+                "NIP:", NIPField,
+                "Name:", nameField,
+                "Program Studi:", programStudiField,
+                "Email:", emailField,
+                "Password:", passwordField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Register Dosen", JOptionPane.OK_CANCEL_OPTION);
@@ -157,8 +160,8 @@ public class UPartnerApp {
         JPasswordField passwordField = new JPasswordField();
 
         Object[] message = {
-            "Email:", emailField,
-            "Password:", passwordField
+                "Email:", emailField,
+                "Password:", passwordField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Login Mahasiswa", JOptionPane.OK_CANCEL_OPTION);
@@ -182,8 +185,8 @@ public class UPartnerApp {
         JPasswordField passwordField = new JPasswordField();
 
         Object[] message = {
-            "Email:", emailField,
-            "Password:", passwordField
+                "Email:", emailField,
+                "Password:", passwordField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Login Dosen", JOptionPane.OK_CANCEL_OPTION);
@@ -203,10 +206,11 @@ public class UPartnerApp {
     }
 
     private void showMahasiswaMenu(Mahasiswa mahasiswa) {
-        String[] options = {"View Profile", "Search Project", "Register for Project", "Chat with Dosen", "Logout"};
+        String[] options = { "View Profile", "Search Project", "Register for Project", "Chat with Dosen", "Logout" };
         int choice;
         do {
-            choice = JOptionPane.showOptionDialog(null, "Choose an option", "Mahasiswa Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            choice = JOptionPane.showOptionDialog(null, "Choose an option", "Mahasiswa Menu",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             switch (choice) {
                 case 0:
                     mahasiswa.viewProfile();
@@ -230,10 +234,11 @@ public class UPartnerApp {
     }
 
     private void showDosenMenu(Dosen dosen) {
-        String[] options = {"View Profile", "Upload Project", "Chat with Mahasiswa", "Logout"};
+        String[] options = { "View Profile", "Upload Project", "Chat with Mahasiswa", "Logout" };
         int choice;
         do {
-            choice = JOptionPane.showOptionDialog(null, "Choose an option", "Dosen Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            choice = JOptionPane.showOptionDialog(null, "Choose an option", "Dosen Menu", JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
             switch (choice) {
                 case 0:
                     dosen.viewProfile();
@@ -261,11 +266,11 @@ public class UPartnerApp {
         JTextField programStudiField = new JTextField();
 
         Object[] message = {
-            "Project Name:", projectNameField,
-            "Description:", descriptionField,
-            "Registration Deadline (yyyy/mm/dd):", registrationDeadlineField,
-            "Requirements:", requirementsField,
-            "Program Studi:", programStudiField
+                "Project Name:", projectNameField,
+                "Description:", descriptionField,
+                "Registration Deadline (yyyy/mm/dd):", registrationDeadlineField,
+                "Requirements:", requirementsField,
+                "Program Studi:", programStudiField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Upload Project", JOptionPane.OK_CANCEL_OPTION);
@@ -276,17 +281,20 @@ public class UPartnerApp {
             String requirements = requirementsField.getText();
             String programStudi = programStudiField.getText();
 
-            if (projectName.isEmpty() || description.isEmpty() || registrationDeadline.isEmpty() || requirements.isEmpty() || programStudi.isEmpty()) {
+            if (projectName.isEmpty() || description.isEmpty() || registrationDeadline.isEmpty()
+                    || requirements.isEmpty() || programStudi.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "All fields must be filled!", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             if (!isValidDate(registrationDeadline)) {
-                JOptionPane.showMessageDialog(null, "Invalid date format! Please use yyyy/mm/dd.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid date format! Please use yyyy/mm/dd.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            Project project = new Project(dosen.getName(), projectName, description, registrationDeadline, requirements, programStudi);
+            Project project = new Project(dosen.getName(), projectName, description, registrationDeadline, requirements,
+                    programStudi);
             projectList.add(project);
             saveProjects();
             JOptionPane.showMessageDialog(null, "Project uploaded successfully!");
@@ -298,8 +306,8 @@ public class UPartnerApp {
         JTextField dateField = new JTextField();
 
         Object[] message = {
-            "Program Studi:", programStudiField,
-            "Date (yyyy/mm/dd):", dateField
+                "Program Studi:", programStudiField,
+                "Date (yyyy/mm/dd):", dateField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Search Projects", JOptionPane.OK_CANCEL_OPTION);
@@ -308,14 +316,16 @@ public class UPartnerApp {
             String date = dateField.getText();
 
             if (!isValidDate(date)) {
-                JOptionPane.showMessageDialog(null, "Invalid date format! Please use yyyy/mm/dd.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Invalid date format! Please use yyyy/mm/dd.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             StringBuilder result = new StringBuilder("Projects:\n");
             for (Project project : projectList) {
                 if (project.getProgramStudi().equals(programStudi) && project.getRegistrationDeadline().equals(date)) {
-                    result.append("  - ").append(project.getProjectName()).append(": ").append(project.getDescription()).append("\n");
+                    result.append("  - ").append(project.getProjectName()).append(": ").append(project.getDescription())
+                            .append("\n");
                 }
             }
             JOptionPane.showMessageDialog(null, result.toString());
@@ -326,7 +336,7 @@ public class UPartnerApp {
         JTextField projectNameField = new JTextField();
 
         Object[] message = {
-            "Project Name:", projectNameField
+                "Project Name:", projectNameField
         };
 
         int option = JOptionPane.showConfirmDialog(null, message, "Register for Project", JOptionPane.OK_CANCEL_OPTION);
