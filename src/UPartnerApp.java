@@ -404,7 +404,7 @@ public class UPartnerApp {
     }
 
     private void loadMahasiswa() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("mahasiswa.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("mahasiswa.txt"))) {
             mahasiswaList = (List<Mahasiswa>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             mahasiswaList = new ArrayList<>();
@@ -412,7 +412,7 @@ public class UPartnerApp {
     }
 
     private void saveMahasiswa() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("mahasiswa.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("mahasiswa.txt"))) {
             oos.writeObject(mahasiswaList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -420,7 +420,7 @@ public class UPartnerApp {
     }
 
     private void loadDosen() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dosen.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dosen.txt"))) {
             dosenList = (List<Dosen>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             dosenList = new ArrayList<>();
@@ -428,7 +428,7 @@ public class UPartnerApp {
     }
 
     private void saveDosen() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("dosen.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("dosen.txt"))) {
             oos.writeObject(dosenList);
         } catch (IOException e) {
             e.printStackTrace();
@@ -436,7 +436,7 @@ public class UPartnerApp {
     }
 
     private void loadProjects() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("projects.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("projects.txt"))) {
             projectList = (List<Project>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             projectList = new ArrayList<>();
@@ -444,7 +444,7 @@ public class UPartnerApp {
     }
 
     private void saveProjects() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("projects.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("projects.txt"))) {
             oos.writeObject(projectList);
         } catch (IOException e) {
             e.printStackTrace();
